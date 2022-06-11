@@ -1,6 +1,55 @@
 /* -------------------------------------------------------------------------- */
 
 /**
+ * KEY: Anh cả đi cuối
+ * INPUT: OVJ CB EFO
+ */
+
+let privateMessage1 = (msg: string): string => {
+  const src: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const index = src.indexOf('Z');
+  return msg.split('').map(item => item !== ' ' ? src[src.indexOf(item) + index] : ' ').join('');
+}
+
+// console.log(privateMessage1('OVJ CB EFO'));
+
+/* -------------------------------------------------------------------------- */
+
+/**
+ * KEY: O tròn như quả trứng Gà
+ * INPUT: BIG VQVP
+ */
+
+let privateMessage2 = (msg: string): string => {
+  const src: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const index = src.lastIndexOf('G') - src.indexOf('O');
+  return msg.split('').map(item => item !== ' ' ? src[src.indexOf(item) + index] : ' ').join('');
+}
+
+// console.log(privateMessage2('BIG VQVP'));
+
+/* -------------------------------------------------------------------------- */
+
+/**
+ * KEY: Chặt đôi thanh sắt để đặt đường ray
+ * INPUT: CUNB_E_UN_HIMINUIOHA_ILNDOGTO_O_GO_I
+ */
+
+let privateMessage3 = (msg: string): string => {
+  const msg2: string = msg.split('').splice(msg.length / 2).join('');
+  msg = msg.split('').splice(0, msg.length / 2).join('');
+  let result: string[] = [];
+  for (let index = 0; index < msg.length; index++) {
+    result.push(msg[index] + msg2[index]);
+  }
+  return result.join('').replace(/_/g, ' ');
+}
+
+// console.log(privateMessage3('CUNB_E_UN_HIMINUIOHA_ILNDOGTO_O_GO_I'));
+
+/* -------------------------------------------------------------------------- */
+
+/**
  * Example 1:
  * Input: nums = [1,3,5,6], target = 5
  * Output: 2
