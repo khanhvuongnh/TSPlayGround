@@ -1,5 +1,45 @@
 /* -------------------------------------------------------------------------- */
 
+// Input: stones = [5,1,2,4,3]
+// Output: false
+// Assuming both players play optimally, return true if Alice wins and false if Bob wins.
+// Explanation: Bob will always win. One possible way for Bob to win is shown below:
+// - Turn 1: Alice can remove the second stone with value 1. Sum of removed stones = 1.
+// - Turn 2: Bob removes the fifth stone with value 3. Sum of removed stones = 1 + 3 = 4.
+// - Turn 3: Alices removes the fourth stone with value 4. Sum of removed stones = 1 + 3 + 4 = 8.
+// - Turn 4: Bob removes the third stone with value 2. Sum of removed stones = 1 + 3 + 4 + 2 = 10.
+// - Turn 5: Alice removes the first stone with value 5. Sum of removed stones = 1 + 3 + 4 + 2 + 5 = 15.
+// Alice loses the game because the sum of the removed stones (15) is divisible by 3. Bob wins the game.
+
+function stoneGameIX(stones: number[]): boolean {
+  let player: boolean = true;
+  let total: number = 0;
+
+  while (stones.length > 0) {
+    let isStoneTaken: boolean = false;
+    for (let i = 0; i < stones.length; i++) {
+      const stone = stones[i];
+      if ((total + stone) % 3 !== 0) {
+        total += stone;
+        stones.splice(i, 1);
+        isStoneTaken = true;
+        break;
+      }
+    }
+
+    if (!isStoneTaken)
+      return !player;
+    else
+      player = !player;
+  }
+
+  return player;
+};
+
+console.log(stoneGameIX([5, 1, 2, 4, 3]));
+
+/* -------------------------------------------------------------------------- */
+
 /**
  * KEY: Anh cả đi cuối
  * INPUT: OVJ CB EFO
