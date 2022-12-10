@@ -36,7 +36,21 @@ function stoneGameIX(stones: number[]): boolean {
   return player;
 };
 
-console.log(stoneGameIX([5, 1, 2, 4, 3]));
+// console.log(stoneGameIX([5, 1, 2, 4, 3]));
+
+/* -------------------------------------------------------------------------- */
+
+/**
+ * INPUT: hk2123sasdWffaasdsd156496841sasdffaasdsd156496841431Ofdfasdf431fdfasdfjasdhsasdffaasdssasdffaasdsd156496841431fdfasdfd1sasdfRfaasdsd156L496841431fdfasdf56496841431fdfasdf1Dasd55646516asdfC4f6sdfg5132fkjfgdfasdUfghwerasasdfaasdfnP
+ * OUTPUT: WORLDCUP
+ */
+
+let removeDigit = (msg: string): string => {
+  let result = msg.replace(/[0-9a-z]+/g, '');
+  return result;
+}
+
+// console.log(removeDigit('hk2123sasdWffaasdsd156496841sasdffaasdsd156496841431Ofdfasdf431fdfasdfjasdhsasdffaasdssasdffaasdsd156496841431fdfasdfd1sasdfRfaasdsd156L496841431fdfasdf56496841431fdfasdf1Dasd55646516asdfC4f6sdfg5132fkjfgdfasdUfghwerasasdfaasdfnP'))
 
 /* -------------------------------------------------------------------------- */
 
@@ -85,7 +99,20 @@ let privateMessage3 = (msg: string): string => {
   return result.join('').replace(/_/g, ' ');
 }
 
-// console.log(privateMessage3('CUNB_E_UN_HIMINUIOHA_ILNDOGTO_O_GO_I'));
+/* -------------------------------------------------------------------------- */
+
+/**
+ * KEY: A=13
+ * INPUT: 20,33,13,26,24,33,37,17,26,34,21,17,26
+ */
+
+let privateMessage4 = (msg: number[]): string => {
+  const src: number[] = Array.from({ length: 26 }, (v, i) => i + 13);
+  const dest: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  return msg.map(item => dest[src.indexOf(+item)]).join('');
+}
+
+console.log(privateMessage4([20, 33, 13, 26, 24, 33, 37, 17, 26, 34, 21, 17, 26]));
 
 /* -------------------------------------------------------------------------- */
 
