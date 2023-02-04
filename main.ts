@@ -1,3 +1,47 @@
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+// An input string is valid if:
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+
+// Input : '()'
+// Output: true
+
+// Input : '([{}])'
+// Output: true
+
+// Input : '()[]{}'
+// Output: true
+
+// Input : '()]'
+// Output: false
+
+// Input : '[({'
+// Output: false
+
+function isValid(s: string): boolean {
+  const invalidPairs: string[] = ['(]', '(}', '[)', '[}', '{)', '{]'];
+  const startChars: string[] = ['(', '[', '{'];
+  const lastChars: string[] = [')', ']', '}'];
+
+  if (s.length % 2 !== 0)
+    return false;
+
+  while (s.length > 0) {
+    if (
+      !startChars.some(x => x === s.charAt(0)) ||
+      !lastChars.some(x => x === s.charAt(s.length - 1)) ||
+      invalidPairs.some(x => s.includes(x)))
+      return false;
+
+    s = s.replace('()', '').replace('[]', '').replace('{}', '');
+  }
+
+  return true;
+};
+
+console.log(isValid('(]'));
+
 /* -------------------------------------------------------------------------- */
 
 // Input: stones = [5,1,2,4,3]
@@ -112,7 +156,7 @@ let privateMessage4 = (msg: number[]): string => {
   return msg.map(item => dest[src.indexOf(+item)]).join('');
 }
 
-console.log(privateMessage4([20, 33, 13, 26, 24, 33, 37, 17, 26, 34, 21, 17, 26]));
+// console.log(privateMessage4([20, 33, 13, 26, 24, 33, 37, 17, 26, 34, 21, 17, 26]));
 
 /* -------------------------------------------------------------------------- */
 
